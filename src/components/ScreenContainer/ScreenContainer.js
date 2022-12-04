@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Footer from "./Footer";
 import Logo from "./Logo";
+import Questions from "./Questions";
 
 export default function ScreenContainer() {
     return (
         <Styleddiv>
             <Logo/>
+            <Questions/>
 
             <Footer />
         </Styleddiv>
