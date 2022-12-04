@@ -1,10 +1,12 @@
 import GlobalStyle from "../globalstyle";
+import ScreenContainer from "./ScreenContainer/ScreenContainer";
 
 function App() {
   return (
     <>
     <GlobalStyle/>
-    <h1>Teste</h1>
+    <ScreenContainer/>
+
     </>    
   );
 }
