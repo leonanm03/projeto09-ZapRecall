@@ -1,20 +1,27 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Footer from "./Footer";
 import Logo from "./Logo";
-import Questions from "./Questions";
+import Questions from "./Questions/Questions";
 
 export default function ScreenContainer() {
+    const [openQuestion, setopenQuestion] = useState([])
+    const [seeAnswer, setseeAnswer] = useState([])
+
     return (
-        <Styleddiv>
-            <Logo/>
-            <Questions/>
+        <StyledDiv>
+            <Logo />
+            <Questions
+                openQuestion={openQuestion} setopenQuestion={setopenQuestion}
+                seeAnswer={seeAnswer} setseeAnswer={setseeAnswer}
+            />
 
             <Footer />
-        </Styleddiv>
+        </StyledDiv>
     )
 }
 
-const Styleddiv = styled.div`
+const StyledDiv = styled.div`
   background-color: #fb6b6b;
   width: 100vw;
   min-height: 100vh;
