@@ -4,7 +4,7 @@ import DECK from "../deck"
 
 export default function Footer({ answeredQuestions }) {
   const answeredNumber = answeredQuestions.length
-  return <FooterDiv>
+  return <FooterDiv data-test="footer">
     {answeredNumber}/{DECK.length} Concluídos
   </FooterDiv>;
 }

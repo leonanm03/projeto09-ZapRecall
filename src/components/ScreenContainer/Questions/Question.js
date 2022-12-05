@@ -28,13 +28,13 @@ export default function Question(
 
     function checkAnswer() {
         if (answeredQuestions.some((x) => x.qNumber === qNumber && x.resposta === "errada")) {
-            return { icon: wrongIcon, color: "#FF3030" };
+            return { datatest: "no-icon", icon: wrongIcon, color: "#FF3030" };
         } else if (answeredQuestions.some((x) => x.qNumber === qNumber && x.resposta === "quase")) {
-            return { icon: almostIcon, color: "#FF922E" };
+            return { datatest: "partial-icon", icon: almostIcon, color: "#FF922E" };
         } else if (answeredQuestions.some((x) => x.qNumber === qNumber && x.resposta === "certa")) {
-            return { icon: correctIcon, color: "#2FBE34" };
+            return { datatest: "zap-icon", icon: correctIcon, color: "#2FBE34" };
         } else {
-            return { icon: playIcon, color: "#333333" };
+            return { datatest: "play-btn", icon: playIcon, color: "#333333" };
         }
     }
 
@@ -57,14 +57,16 @@ export default function Question(
     if (!openQuestion.includes(qNumber) || answered) {
         return (
             <ClosedQuestion
+                data-test="flashcard"
                 openQuestion={openQuestion} qNumber={qNumber}
                 answered={answered}
                 answeredQuestions={answeredQuestions}
                 checkAnswer={checkAnswer}
             >
 
-                <p> Pergunta {qNumber}</p>
+                <p data-test="flashcard-text"> Pergunta {qNumber}</p>
                 <input
+                    data-test={checkAnswer().datatest}
                     onClick={openThisQuestion}
                     type="image"
                     src={checkAnswer().icon}
@@ -74,25 +76,26 @@ export default function Question(
         );
     } else if (!seeAnswer.includes(qNumber)) {
         return (
-            <OpenQuestion>
-                <p> {question}</p>
-                <img onClick={openThisAnswer} src={turnArrow} alt={turnArrow}></img>
+            <OpenQuestion data-test="flashcard">>
+                <p data-test="flashcard-text"> {question}</p>
+                <img data-test="turn-btn" onClick={openThisAnswer}
+                    src={turnArrow} alt={turnArrow}></img>
             </OpenQuestion>
         );
     }
     else {
         return (
-            <OpenQuestion>
-                <p> {answer}</p>
+            <OpenQuestion data-test="flashcard">
+                <p data-test="flashcard-text"> {answer}</p>
                 <ButtonsDiv>
-                    <button onClick={() => answerResult(qNumber, "errada")}>
+                    <button data-test="no-btn" onClick={() => answerResult(qNumber, "errada")}>
                         Não Lembrei!
                     </button>
-                    <button onClick={() => answerResult(qNumber, "quase")}>
+                    <button data-test="partial-btn" onClick={() => answerResult(qNumber, "quase")}>
                         {" "}
                         Quase não Lembrei
                     </button>
-                    <button onClick={() => answerResult(qNumber, "certa")}>Zap</button>
+                    <button data-test="zap-btn" onClick={() => answerResult(qNumber, "certa")}>Zap</button>
                 </ButtonsDiv>
             </OpenQuestion>
         );
