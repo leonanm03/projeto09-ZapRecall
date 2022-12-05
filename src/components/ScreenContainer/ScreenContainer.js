@@ -7,6 +7,7 @@ import Questions from "./Questions/Questions";
 export default function ScreenContainer() {
     const [openQuestion, setopenQuestion] = useState([])
     const [seeAnswer, setseeAnswer] = useState([])
+    const [answeredQuestions, setansweredQuestions] = useState([])
 
     return (
         <StyledDiv>
@@ -14,6 +15,7 @@ export default function ScreenContainer() {
             <Questions
                 openQuestion={openQuestion} setopenQuestion={setopenQuestion}
                 seeAnswer={seeAnswer} setseeAnswer={setseeAnswer}
+                answeredQuestions={answeredQuestions} setansweredQuestions={setansweredQuestions}
             />
 
             <Footer />

@@ -2,11 +2,7 @@ import DECK from "../../deck"
 import Question from "./Question";
 
 
-export default function Questions(
-    {
-        openQuestion, setopenQuestion,
-        seeAnswer, setseeAnswer
-    }) {
+export default function Questions(props) {
 
     return (
         <ul>
@@ -16,11 +12,8 @@ export default function Questions(
                     qNumber={c.qNumber}
                     question={c.question}
                     answer={c.answer}
-                    openQuestion={openQuestion} setopenQuestion={setopenQuestion}
-                    seeAnswer={seeAnswer} setseeAnswer={setseeAnswer}
+                    {...props}
                 />
-
-
             ))}
         </ul>
     )
