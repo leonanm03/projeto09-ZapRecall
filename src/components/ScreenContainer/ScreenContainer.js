@@ -18,7 +18,7 @@ export default function ScreenContainer() {
                 answeredQuestions={answeredQuestions} setansweredQuestions={setansweredQuestions}
             />
 
-            <Footer />
+            <Footer answeredQuestions={answeredQuestions} />
         </StyledDiv>
     )
 }

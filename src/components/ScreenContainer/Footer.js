@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import DECK from "../deck"
 
 
-export default function Footer() {
+export default function Footer({ answeredQuestions }) {
+  const answeredNumber = answeredQuestions.length
   return <FooterDiv>
-    0/4 Concluídos
+    {answeredNumber}/{DECK.length} Concluídos
   </FooterDiv>;
 }
 
